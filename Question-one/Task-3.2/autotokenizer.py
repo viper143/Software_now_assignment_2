@@ -25,7 +25,7 @@ def count_and_display_top_tokens(file_path, model_name, top_n=30, num_processes=
         combined_counter = sum(token_counters, Counter())
 
         # Display the top N tokens
-        top_tokens = .most_common(top_n)
+        top_tokens = combined_counter.most_common(top_n)
         print(f"Top {top_n} tokens:")
         for token, count in top_tokens:
             print(f"{token}: {count}")
@@ -33,4 +33,4 @@ def count_and_display_top_tokens(file_path, model_name, top_n=30, num_processes=
 # Example usage:
 file_path = 'all_csv_file.txt'
 model_name = 'bert-base-uncased'  # You can use any model name from the transformers library
-count_and_display_top_tokens(file_path, model_name)
+count_and_display_top_tokens(, model_name)
