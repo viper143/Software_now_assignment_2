@@ -17,7 +17,7 @@ for (file, text_column) in csv_files:
         all_texts.extend(df[text_column].astype(str).tolist())
 
 # Write text information to a new text file
-output_file = 'all_csv_file.txt'
+output_file = 'all_.txt'
 with open(output_file, 'w', encoding='utf-8') as f:
     for text in all_texts:
         f.write(text + '\n')
