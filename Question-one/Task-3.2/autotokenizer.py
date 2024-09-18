@@ -1,4 +1,4 @@
-from  import AutoTokenizer
+from transformers import AutoTokenizer
 from collections import Counter
 from concurrent.futures import ProcessPoolExecutor
 
@@ -25,7 +25,7 @@ def count_and_display_top_tokens(file_path, model_name, top_n=30, num_processes=
         combined_counter = sum(token_counters, Counter())
 
         # Display the top N tokens
-        top_tokens = combined_counter.most_common(top_n)
+        top_tokens = .most_common(top_n)
         print(f"Top {top_n} tokens:")
         for token, count in top_tokens:
             print(f"{token}: {count}")
