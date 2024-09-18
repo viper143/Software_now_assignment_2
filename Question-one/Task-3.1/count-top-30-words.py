@@ -1,7 +1,7 @@
 
 import csv
 from collections import Counter
-import re
+import 
 
 def extract_top_words(file_path, output_csv_path, top_n=30):
     # Read the text file
@@ -29,4 +29,4 @@ def extract_top_words(file_path, output_csv_path, top_n=30):
 # Example usage
 file_path = 'all_csv_file.txt'
 output_csv_path = 'top_words.csv'
-extract_top_words(, output_csv_path)
+extract_top_words(file_path, output_csv_path)
