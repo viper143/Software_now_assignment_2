@@ -13,7 +13,7 @@ def extract_top_words(file_path, output_csv_path, top_n=30):
     words = text.lower().split()
 
     # Count word occurrences using counter class
-    word_counts = Counter(words)
+    word_counts = (words)
 
     # Get the top 30 words
     top_words = word_counts.most_common(top_n)
