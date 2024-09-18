@@ -1,37 +1,35 @@
 from PIL import Image
+# Generate the random number as described in the prompt
+import time
 
-# Open the original image
-original_image = Image.open('image.jpg')
+current_time = int(time.time())
+generated_number = (current_time % 100) + 50
+if generated_number % 2 == 0:
+    generated_number += 10
+print("generated Number:",generated_number)
 
-# Get the dimensions of the image
-width, height = original_image.size
-
-# Define the generated number
-generated_number = 60
-
-# Create a new image with the same size and mode as the original
-new_image = Image.new('RGB', (width, height))
-
-# Iterate over each pixel and apply the transformation
+# Open the image
+img = Image.open("chapter1.jpg")
+# Get the image size
+width, height = img.size
+# Create a new image with the same size
+new_img = Image.new("RGB", (width, height))
+#Iterate through each pixel and modify its RGB values
 for x in range(width):
     for y in range(height):
-        # Get the original pixel values
-        r, g, b = original_image.getpixel((x, y))
-        
-        # Add the generated number to each channel
-        new_r = min(r + generated_number, 255)
-        new_g = min(g + generated_number, 255)
-        new_b = min(b + generated_number, 255)
+        r, g, b = img.getpixel((x, y))
+        new_r = min(255, r + generated_number)  # Ensure values don't exceed 255
+        new_g = min(255, g + generated_number)
+        new_b = min(255, b + generated_number)
+        new_img.putpixel((x, y), (new_r, new_g, new_b))
 
-        # Set the new pixel value in the new image
-        new_image.putpixel((x, y), (new_r, new_g, new_b))
-
-# Save the new image
-new_image.save('outputimage_ques2.png')
-
-# Calculate the sum of all red pixel values in the new image
-red_pixel_sum = sum(new_image.getpixel((x, y))[0] for x in range(width) for y in range(height))
-
-# Print the sum
-print("Sum of red pixel values:", red_pixel_sum)
-
+# Save the modified image
+new_img.save("chapter1out.jpg")
+print("new image is saved as chapter1out.jpg ")
+# Calculate the sum of red pixel values
+red_sum = 0
+for x in range(width):
+    for y in range(height):
+        r, _, _ = img.getpixel((x, y))
+        red_sum += r
+print("Sum of red pixel values:", red_sum)
